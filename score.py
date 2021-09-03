@@ -16,16 +16,22 @@ class ScoreKeeper:
     def __init__(self, sport: str) -> None:
         port = get_com_port()
         self.score = None # type: SerialConnection
+        self.sport = ""
         if sport == 'basketball':
             self.score = Basketball(port)
+            self.sport = "Basketball"
         elif sport == 'football':
             self.score = Football(port)
+            self.sport = "Football"
         elif sport == 'volleyball':
             self.score = Volleyball(port)
+            self.sport = "Volleyball"
         elif sport == 'waterpolo':
             self.score = WaterPolo(port)
+            self.sport = "Water Polo"
         elif sport == 'daktronicswaterpolo':
             self.score = WaterPoloDaktronics(port)
+            self.sport = "Dak W. Polo"
 
         self.score.on_update = self.updater
     

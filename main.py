@@ -1,6 +1,12 @@
 from flask import Flask
 from flask_socketio import SocketIO, emit
 
+try:
+    from oled_status import Status
+    oled = Status('ScoreBox Relay', 'Awaiting Sport')
+except Exception:
+    oled = None
+
 from score import ScoreKeeper
 
 scorekeeper = None # type: ScoreKeeper
@@ -15,10 +21,13 @@ def index():
 @app.get('/init/<mode>')
 def set_mode(mode):
     global scorekeeper
+    global oled
     if scorekeeper:
         return 'ScoreKeeper Already Running'
     else:
         scorekeeper = ScoreKeeper(mode)
+        if oled:
+            oled.update(scorekeeper.sport)
     return 'OK'
 
 @socketio.on('update')
