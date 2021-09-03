@@ -15,7 +15,10 @@ def index():
 @app.get('/init/<mode>')
 def set_mode(mode):
     global scorekeeper
-    scorekeeper = ScoreKeeper(mode)
+    if scorekeeper:
+        return 'ScoreKeeper Already Running'
+    else:
+        scorekeeper = ScoreKeeper(mode)
     return 'OK'
 
 @socketio.on('update')
