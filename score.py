@@ -5,6 +5,7 @@ from consoles.sports import Football
 from consoles.sports import Volleyball
 from consoles.sports import WaterPolo
 from consoles.sports import WaterPoloDaktronics
+from consoles.sports import Wrestling
 
 from consoles import SerialConnection
 
@@ -32,6 +33,9 @@ class ScoreKeeper:
         elif sport == 'daktronicswaterpolo':
             self.score = WaterPoloDaktronics(port)
             self.sport = "Dak W. Polo"
+        elif sport == 'wrestling':
+            self.score = Wrestling(port)
+            self.sport = "Wrestling"
 
         self.score.on_update = self.updater
     
