@@ -27,9 +27,7 @@ mac-remote-command==0.0.5
 MarkupSafe==2.0.1
 mccabe==0.6.1
 mpmath==1.1.0
-numpy==1.19.5
 oled-status==0.0.3
-opencv-python==4.5.1.48
 packaging==21.0
 Pillow==8.0.1
 platformdirs==2.3.0
